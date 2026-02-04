@@ -52,7 +52,7 @@ export function ProductActions({ book }: ProductActionsProps) {
                 throw new Error('No checkout URL returned');
             }
         } catch (err) {
-            console.error("Checkout failed", err);
+            if (process.env.NODE_ENV !== 'production') console.error("Checkout failed", err);
             error("Checkout failed. Please try again.");
             // Fallback: add to cart and open
             addItem(createCartItem());

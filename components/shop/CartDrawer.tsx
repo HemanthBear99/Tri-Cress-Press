@@ -157,7 +157,7 @@ export function CartDrawer() {
                                         throw new Error('No checkout URL returned');
                                     }
                                 } catch (err) {
-                                    console.error("Checkout failed", err);
+                                    if (process.env.NODE_ENV !== 'production') console.error("Checkout failed", err);
                                     const errorMessage = err instanceof Error ? err.message : "Unknown error occurred";
                                     error("Checkout failed. Please try again.");
                                 } finally {

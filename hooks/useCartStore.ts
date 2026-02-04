@@ -101,7 +101,7 @@ export const useCartStore = create<CartState>()(
             // Only persist items (do not persist UI open/close state)
             partialize: (state) => ({ items: state.items }),
             onRehydrateStorage: () => (state) => {
-                console.log('Cart hydrated:', state?.items?.length || 0, 'items');
+                // Rehydration completed; avoid noisy logs in production
                 return state;
             },
             version: 1,
