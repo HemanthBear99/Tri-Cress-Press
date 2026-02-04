@@ -69,7 +69,7 @@ export function Hero() {
             src="/images/hero_author_bg.png"
             alt="Background for Authors"
             fill
-            sizes="100vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover opacity-60 mix-blend-overlay"
             priority
           />
@@ -135,7 +135,7 @@ export function Hero() {
             src="/images/hero_reader_bg.png"
             alt="Background for Readers"
             fill
-            sizes="100vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover opacity-50 mix-blend-multiply"
             priority
           />

@@ -3,8 +3,7 @@ import { Manrope, Newsreader, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { ConditionalLayout } from "@/components/layout/ConditionalLayout";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { SoulMirror } from "@/components/ui/SoulMirror";
-import { RoyalCursor } from "@/components/ui/RoyalCursor";
+import ClientVisuals from "@/components/ui/ClientVisuals";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const manrope = Manrope({
@@ -42,8 +41,7 @@ export default function RootLayout({
       <html lang="en" className={`${manrope.variable} ${newsreader.variable} ${notoSans.variable}`}>
         <body className="font-sans antialiased text-foreground bg-background" suppressHydrationWarning>
           <SmoothScroll>
-            <RoyalCursor />
-            <SoulMirror />
+            <ClientVisuals />
             <ConditionalLayout>{children}</ConditionalLayout>
           </SmoothScroll>
         </body>

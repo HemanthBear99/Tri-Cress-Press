@@ -98,8 +98,8 @@ export const useCartStore = create<CartState>()(
         }),
         {
             name: 'tricrest-cart-storage',
-            // Only persist items, not the open/close state
-            partialize: (state) => ({ items: state.items, isOpen: state.isOpen }),
+            // Only persist items (do not persist UI open/close state)
+            partialize: (state) => ({ items: state.items }),
             onRehydrateStorage: () => (state) => {
                 console.log('Cart hydrated:', state?.items?.length || 0, 'items');
                 return state;
