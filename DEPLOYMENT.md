@@ -168,4 +168,4 @@ After deployment, consider adding:
 
 ---
 
-For support or questions, open an issue on GitHub or contact support@tricrestpress.com
+For support or questions, open an issue on the [GitHub repository](https://github.com/HemanthBear99/Tri-Cress-Press/issues).

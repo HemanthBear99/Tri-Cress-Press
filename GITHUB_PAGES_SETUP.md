@@ -71,7 +71,7 @@ If you want to use a custom domain (e.g., www.tricrestpress.com):
 - Check that the docs/index.html file exists in your repository
 
 ### Need Help?
-Open an issue on GitHub or check [DEPLOYMENT.md](DEPLOYMENT.md) for more details.
+Open an issue on the [GitHub repository](https://github.com/HemanthBear99/Tri-Cress-Press/issues) for support.
 
 ---
 
