@@ -1,26 +1,284 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-cream: hsl(var(--cream));
+  --color-navy-deep: hsl(var(--navy-deep));
+  --color-gold-muted: hsl(var(--gold-muted));
+  --color-gold-glow: hsl(var(--gold-glow));
+
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-noto-sans);
+  --font-manrope: var(--font-manrope);
+
+  --animate-shimmer: text-shimmer 4s ease-in-out infinite;
+
+  @keyframes text-shimmer {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 220 13% 8%;
+  --foreground: 220 14% 96%;
+  --primary: 45 91% 58%;
+  --primary-foreground: 220 13% 8%;
+  --cream: 45 20% 92%;
+  --navy-deep: 220 100% 7%;
+  --gold-muted: 38 82% 50%;
+  --gold-glow: 45 100% 65%;
+
+  /* Royal Fonts */
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-noto-sans);
+  --font-manrope: var(--font-manrope);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 220 14% 4%;
+    --primary: 45 91% 58%;
+    --primary-foreground: 220 13% 8%;
+    --cream: 45 20% 92%;
+    --navy-deep: 220 100% 7%;
+    --gold-muted: 38 82% 50%;
+    --gold-glow: 45 100% 65%;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: auto;
+}
+
+body.hide-cursor {
+  cursor: none !important;
+}
+
+.hide-cursor a,
+.hide-cursor button,
+.hide-cursor [role="button"],
+.hide-cursor input,
+.hide-cursor select,
+.hide-cursor textarea {
+  cursor: none !important;
+}
+
+/* Restore cursor for Clerk and iframes */
+.cl-root,
+.cl-modalBackdrop,
+.cl-userButton-popover,
+iframe {
+  cursor: auto !important;
+}
+
+/* Restore cursor for text inputs for better UX */
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* Premium Utility Classes */
+.bg-cream {
+  background-color: hsl(var(--cream));
+}
+
+.bg-navy-deep {
+  background-color: hsl(var(--navy-deep));
+}
+
+.text-navy-deep {
+  color: hsl(var(--navy-deep));
+}
+
+.bg-gold-muted {
+  background-color: hsl(var(--gold-muted));
+}
+
+.text-gold-muted {
+  color: hsl(var(--gold-muted));
+}
+
+/* Royal Typography Classes */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-manrope {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+/* Royal Gold Accents with Premium Effects */
+.bg-primary,
+[class*="bg-primary"] {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--gold-glow)) 50%, hsl(var(--primary)) 100%);
+  background-size: 200% 200%;
+
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.3),
+    0 0 40px hsl(var(--primary) / 0.1),
+    inset 0 0 20px hsl(var(--gold-glow) / 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 600;
+}
+
+.bg-primary:hover,
+[class*="bg-primary"]:hover {
+  background-position: 100% 0%;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px hsl(var(--primary) / 0.4),
+    0 0 60px hsl(var(--primary) / 0.2),
+    inset 0 0 25px hsl(var(--gold-glow) / 0.3);
+}
+
+.text-primary {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 10px hsl(var(--primary) / 0.3),
+    0 0 20px hsl(var(--primary) / 0.1);
+  transition: all 0.3s ease;
+}
+
+.text-primary:hover {
+  color: hsl(var(--gold-glow));
+  text-shadow: 0 0 15px hsl(var(--gold-glow) / 0.5),
+    0 0 30px hsl(var(--gold-glow) / 0.2);
+  transform: translateY(-1px);
+}
+
+/* Premium Gold Border Effects */
+.border-gold {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 15px hsl(var(--primary) / 0.2),
+    inset 0 0 15px hsl(var(--primary) / 0.1);
+}
+
+.border-gold:hover {
+  border-color: hsl(var(--gold-glow));
+  box-shadow: 0 0 25px hsl(var(--gold-glow) / 0.3),
+    inset 0 0 20px hsl(var(--gold-glow) / 0.2);
+}
+
+/* Gold Text Shimmer Animation */
+
+
+.text-shimmer {
+  background: linear-gradient(90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--gold-glow)) 25%,
+      hsl(var(--primary)) 50%,
+      hsl(var(--gold-glow)) 75%,
+      hsl(var(--primary)) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* Premium Animations */
+
+
+/* Premium Hover Effects */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px hsl(var(--primary) / 0.3);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.5),
+    0 0 50px hsl(var(--gold-glow) / 0.3);
+}
+
+/* Navbar Styles - Transparent to Navy on Scroll */
+nav.navbar-consistent {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding: 1rem 0 !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+nav.navbar-consistent.navbar-scrolled {
+  background: hsl(var(--navy-deep)) !important;
+  background-color: hsl(var(--navy-deep)) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid hsl(var(--primary) / 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  padding: 0.5rem 0 !important;
+}
+
+/* Navbar text styling */
+.navbar-consistent .nav-text {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar-consistent .nav-text:hover {
+  color: hsl(var(--primary)) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+.navbar-consistent .text-primary {
+  color: hsl(var(--primary)) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Accessibility with reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-enter,
+  .animate-float,
+  .animate-glow,
+  .animate-luxury,
+  .text-shimmer {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hover-lift:hover,
+  .hover-glow:hover {
+    transform: none;
+  }
+
+  nav.navbar-consistent {
+    transition: none !important;
+  }
 }
